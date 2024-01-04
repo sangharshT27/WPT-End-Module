@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #7e4562;
+        }
+
+        .demo {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #3b3739;
+            padding: 20px;
+            border-radius: -50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: radius 40px;;
+        }
+
+        .demo img {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            margin-top: -58px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 15%;
+            padding: 10px;
+            margin: auto;
+            margin-left: 600px;
+            background-color: #af4c63;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <img src="logo.png" alt="Logo"/>
+        <form>
+           
+            <input type="email" placeholder="Email" id="email" required ><br>
+            <input type="password" placeholder="password"  id="password" required><br>
+
+
+            <input type="checkbox" >Remember Me</input>
+            <a href="">Forgot password</a>
+           
+        </form>
+    </div>
+    <div>
+        <button type="submit" onclick="validateForm()">Login</button>
+    </div>
+
+    <div id="error-message" class="error-message"></div>
+
+        <script>
+            function validateForm() {
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var errorMessage = document.getElementById('error-message');
+
+                
+                if (email.trim() === '') {
+                    errorMessage.innerHTML = 'Email cannot be blank.';
+                    return false;
+                }
+
+     
+                if (password.trim() === '') {
+                    errorMessage.innerHTML = 'Password cannot be blank.';
+                    return false;
+                }
+
+                
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorMessage.innerHTML = 'Invalid email format.';
+                    return false;
+                }
+
+                
+                errorMessage.innerHTML = '';
+                return true;
+            }
+        </script>
+    </div>
+</body>
+</html>
